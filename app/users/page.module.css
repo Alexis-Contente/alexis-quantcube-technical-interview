@@ -1,0 +1,26 @@
+.main {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  max-width: 100wh;
+}
+
+.user_card {
+  flex-grow: 1;
+  width: 300px;
+  margin: 10px;
+  padding: 10px 25px;
+  background-color: #e2e2e2;
+  border: 1px solid transparent;
+  border-radius: 0.5rem;
+  transition: transform 0.2s;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+}
+
+.user_card:hover,
+.user_card:focus,
+.user_card:active {
+  transform: scale(1.05);
+  background-color: #d4d4d4;
+  cursor: pointer;
+}

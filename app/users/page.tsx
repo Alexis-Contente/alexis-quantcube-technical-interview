@@ -44,7 +44,7 @@ export default function Users() {
           <Loader />
         ) : (
           users.map((user) => (
-            <div key={user.id}>
+            <div className={style.user_card} key={user.id}>
               <h1>{user.name}</h1>
               <p>{user.email}</p>
               <p>{user.phone}</p>
