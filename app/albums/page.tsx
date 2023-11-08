@@ -44,8 +44,8 @@ export default function Albums() {
           <Loader />
         ) : (
           albums.map((album) => (
-            <div key={album.id}>
-              <h1>{album.title}</h1>
+            <div className={style.album_card} key={album.id}>
+              <h1 className={style.title}>{album.title}</h1>
             </div>
           ))
         )}
