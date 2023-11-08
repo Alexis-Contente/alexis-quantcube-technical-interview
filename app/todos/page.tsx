@@ -1,16 +1,21 @@
 "use client";
 
+// IMPORTS
 import style from "./page.module.css";
-import Footer from "@/components/footer/page";
 import Header from "@/components/header/page";
+import Footer from "@/components/footer/page";
+import Loader from "@/components/loader/page";
 import { useEffect, useState } from "react";
 import { Todos } from "@/types/todos";
-import Loader from "@/components/loader/page";
 
 export default function Todos() {
+  // STATES
+  // Loader
   const [loading, setLoading] = useState<boolean>(true);
+  // Todos
   const [todos, setTodos] = useState<Todos[]>([]);
 
+  // API CALL
   const fetchTodosData = async () => {
     try {
       const response = await fetch(
@@ -26,6 +31,7 @@ export default function Todos() {
     }
   };
 
+  // USE EFFECT
   useEffect(() => {
     fetchTodosData();
   }, []);

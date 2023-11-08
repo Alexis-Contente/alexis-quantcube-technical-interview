@@ -1,17 +1,21 @@
 "use client";
 
+// IMPORTS
 import style from "./page.module.css";
-import Footer from "@/components/footer/page";
 import Header from "@/components/header/page";
+import Footer from "@/components/footer/page";
+import Loader from "@/components/loader/page";
 import { useEffect, useState } from "react";
 import { Users } from "@/types/users";
-import Loader from "@/components/loader/page";
 
 export default function Users() {
+  // STATES
+  // Loader
   const [loading, setLoading] = useState(true);
-
+  // Users
   const [users, setUsers] = useState<Users[]>([]);
 
+  // API CALL
   const fetchUsersData = async () => {
     try {
       const response = await fetch(
@@ -27,6 +31,7 @@ export default function Users() {
     }
   };
 
+  // USE EFFECT
   useEffect(() => {
     fetchUsersData();
   }, []);

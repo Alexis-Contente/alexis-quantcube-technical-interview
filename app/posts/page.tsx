@@ -1,18 +1,23 @@
 "use client";
 
+// IMPORTS
 import style from "./page.module.css";
-import { useEffect, useState } from "react";
-import { Posts } from "@/types/posts";
 import Header from "@/components/header/page";
 import Footer from "@/components/footer/page";
 import Loader from "@/components/loader/page";
+import { useEffect, useState } from "react";
+import { Posts } from "@/types/posts";
 
 export default function Posts() {
   const baseUrlApi = process.env.BASE_URL_API;
 
+  // STATES
+  // Loader
   const [loading, setLoading] = useState<boolean>(true);
+  // Posts
   const [posts, setPosts] = useState<Posts[]>([]);
 
+  // API CALL
   const fetchPostsData = async () => {
     try {
       const response = await fetch(
@@ -28,6 +33,7 @@ export default function Posts() {
     }
   };
 
+  // USE EFFECT
   useEffect(() => {
     fetchPostsData();
   }, []);

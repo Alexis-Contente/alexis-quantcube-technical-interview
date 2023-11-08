@@ -1,16 +1,21 @@
 "use client";
 
+// IMPORTS
 import style from "./page.module.css";
-import Footer from "@/components/footer/page";
 import Header from "@/components/header/page";
+import Footer from "@/components/footer/page";
+import Loader from "@/components/loader/page";
 import { useEffect, useState } from "react";
 import { Albums } from "@/types/albums";
-import Loader from "@/components/loader/page";
 
 export default function Albums() {
+  // STATES
+  //Loader
   const [loading, setLoading] = useState<boolean>(true);
+  //Albums
   const [albums, setAlbums] = useState<Albums[]>([]);
 
+  // API CALL
   const fetchAlbumsData = async () => {
     try {
       const response = await fetch(
@@ -26,6 +31,7 @@ export default function Albums() {
     }
   };
 
+  // USE EFFECT
   useEffect(() => {
     fetchAlbumsData();
   }, []);
