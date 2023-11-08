@@ -1,0 +1,27 @@
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.link {
+  margin: 2rem 3rem;
+  padding: 1rem 1rem;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  line-height: 1.5;
+  color: #000000;
+  background-color: #e2e2e2;
+  text-decoration: none;
+  border: 1px solid transparent;
+  border-radius: 0.5rem;
+  transition: transform 0.2s;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+}
+
+.link:hover,
+.link:focus,
+.link:active {
+  transform: scale(1.1);
+  background-color: #d4d4d4;
+}
