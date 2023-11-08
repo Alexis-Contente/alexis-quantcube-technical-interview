@@ -29,7 +29,6 @@ export default function CardList() {
         posts.map((post) => (
           <div key={post.id} className={style.card_container}>
             <h1>{post.title}</h1>
-            <p>{post.body}</p>
           </div>
         ))
       ) : (
