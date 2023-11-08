@@ -44,8 +44,9 @@ export default function Todos() {
           <Loader />
         ) : (
           todos.map((todo) => (
-            <div key={todo.id}>
-              <h1>{todo.title}</h1>
+            <div className={style.todo_card} key={todo.id}>
+              <h1 className={style.title}>{todo.title}</h1>
+              <p>{todo.completed ? "Fait" : "A faire"}</p>
             </div>
           ))
         )}
