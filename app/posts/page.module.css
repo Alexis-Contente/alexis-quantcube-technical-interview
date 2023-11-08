@@ -1,8 +1,28 @@
-.card_container {
-  /* margin: 20px 100px;
-  padding: 10px 20px; */
-  border: 1px solid black;
+.main {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.post_card {
+  width: 40rem;
+  margin: 10px;
+  padding: 10px 25px;
+  background-color: #e2e2e2;
+  border: 1px solid transparent;
+  border-radius: 0.5rem;
+  transition: transform 0.2s;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+}
+
+.post_card:hover,
+.post_card:focus,
+.post_card:active {
+  transform: scale(1.05);
+  background-color: #d4d4d4;
+  cursor: pointer;
+}
+
+.title {
+  font-size: 1.5rem;
 }

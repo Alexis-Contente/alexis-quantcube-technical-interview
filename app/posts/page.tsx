@@ -45,8 +45,8 @@ export default function Posts() {
           <Loader />
         ) : (
           posts.map((post) => (
-            <div key={post.id} className={style.card_container}>
-              <h1>{post.title}</h1>
+            <div key={post.id} className={style.post_card}>
+              <h1 className={style.title}>{post.title}</h1>
             </div>
           ))
         )}
