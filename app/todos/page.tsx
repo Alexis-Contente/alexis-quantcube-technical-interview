@@ -5,8 +5,10 @@ import Footer from "@/components/footer/page";
 import Header from "@/components/header/page";
 import { useEffect, useState } from "react";
 import { Todos } from "@/types/todos";
+import Loader from "@/components/loader/page";
 
 export default function Todos() {
+  const [loading, setLoading] = useState<boolean>(true);
   const [todos, setTodos] = useState<Todos[]>([]);
 
   const fetchTodosData = async () => {
@@ -19,6 +21,8 @@ export default function Todos() {
       setTodos(data);
     } catch (error) {
       console.log("Impossible de récupérer les données Todos de l'API", error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -30,14 +34,14 @@ export default function Todos() {
     <>
       <Header />
       <main className={style.main}>
-        {todos ? (
+        {loading ? (
+          <Loader />
+        ) : (
           todos.map((todo) => (
             <div key={todo.id}>
               <h1>{todo.title}</h1>
             </div>
           ))
-        ) : (
-          <p>Loading...</p>
         )}
       </main>
       <Footer />

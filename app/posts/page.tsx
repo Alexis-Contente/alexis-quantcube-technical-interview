@@ -5,10 +5,12 @@ import { useEffect, useState } from "react";
 import { Posts } from "@/types/posts";
 import Header from "@/components/header/page";
 import Footer from "@/components/footer/page";
+import Loader from "@/components/loader/page";
 
 export default function Posts() {
   const baseUrlApi = process.env.BASE_URL_API;
 
+  const [loading, setLoading] = useState<boolean>(true);
   const [posts, setPosts] = useState<Posts[]>([]);
 
   const fetchPostsData = async () => {
@@ -21,6 +23,8 @@ export default function Posts() {
       setPosts(data);
     } catch (error) {
       console.log("Impossible de récupérer les données de l'API", error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -31,14 +35,14 @@ export default function Posts() {
     <>
       <Header />
       <main className={style.main}>
-        {posts ? (
+        {loading ? (
+          <Loader />
+        ) : (
           posts.map((post) => (
             <div key={post.id} className={style.card_container}>
               <h1>{post.title}</h1>
             </div>
           ))
-        ) : (
-          <p>Loading...</p>
         )}
       </main>
       <Footer />

@@ -5,8 +5,11 @@ import Footer from "@/components/footer/page";
 import Header from "@/components/header/page";
 import { useEffect, useState } from "react";
 import { Users } from "@/types/users";
+import Loader from "@/components/loader/page";
 
 export default function Users() {
+  const [loading, setLoading] = useState(true);
+
   const [users, setUsers] = useState<Users[]>([]);
 
   const fetchUsersData = async () => {
@@ -19,6 +22,8 @@ export default function Users() {
       setUsers(data);
     } catch (error) {
       console.log("Impossible de récupérer les données Users de l'API", error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -30,7 +35,9 @@ export default function Users() {
     <>
       <Header />
       <main className={style.main}>
-        {users ? (
+        {loading ? (
+          <Loader />
+        ) : (
           users.map((user) => (
             <div key={user.id}>
               <h1>{user.name}</h1>
@@ -56,8 +63,6 @@ export default function Users() {
               </details>
             </div>
           ))
-        ) : (
-          <p>Loading...</p>
         )}
       </main>
       <Footer />
