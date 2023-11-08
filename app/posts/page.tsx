@@ -3,8 +3,12 @@
 import style from "./page.module.css";
 import { useEffect, useState } from "react";
 import { Posts } from "@/types/posts";
+import Header from "@/components/header/page";
+import Footer from "@/components/footer/page";
 
 export default function Posts() {
+  const baseUrlApi = process.env.BASE_URL_API;
+
   const [posts, setPosts] = useState<Posts[]>([]);
 
   const fetchPostsData = async () => {
@@ -25,6 +29,7 @@ export default function Posts() {
   }, []);
   return (
     <>
+      <Header />
       {posts ? (
         posts.map((post) => (
           <div key={post.id} className={style.card_container}>
@@ -34,6 +39,7 @@ export default function Posts() {
       ) : (
         <p>Loading...</p>
       )}
+      <Footer />
     </>
   );
 }
