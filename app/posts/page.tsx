@@ -4,7 +4,7 @@ import style from "./page.module.css";
 import { useEffect, useState } from "react";
 import { Posts } from "@/types/posts";
 
-export default function CardList() {
+export default function Posts() {
   const [posts, setPosts] = useState<Posts[]>([]);
 
   const fetchPostsData = async () => {
