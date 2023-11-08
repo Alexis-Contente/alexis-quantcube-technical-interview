@@ -35,6 +35,23 @@ export default function Users() {
             <p>{user.email}</p>
             <p>{user.phone}</p>
             <p>{user.website}</p>
+            <details>
+              <summary>Address</summary>
+              <>
+                <p>{user.address.street}</p>
+                <p>{user.address.suite}</p>
+                <p>{user.address.city}</p>
+                <p>{user.address.zipcode}</p>
+              </>
+            </details>
+            <details>
+              <summary>Company</summary>
+              <>
+                <p>{user.company.name}</p>
+                <p>{user.company.catchPhrase}</p>
+                <p>{user.company.bs}</p>
+              </>
+            </details>
           </div>
         ))
       ) : (
