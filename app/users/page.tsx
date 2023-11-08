@@ -7,6 +7,7 @@ import Footer from "@/components/footer/page";
 import Loader from "@/components/loader/page";
 import { useEffect, useState } from "react";
 import { Users } from "@/types/users";
+import Link from "next/link";
 
 export default function Users() {
   // STATES
@@ -44,7 +45,11 @@ export default function Users() {
           <Loader />
         ) : (
           users.map((user) => (
-            <div className={style.user_card} key={user.id}>
+            <Link
+              className={style.user_card}
+              key={user.id}
+              href={`/users/${user.id}`}
+            >
               <h1>{user.name}</h1>
               <p>{user.email}</p>
               <p>{user.phone}</p>
@@ -66,7 +71,7 @@ export default function Users() {
                   <p>{user.company.bs}</p>
                 </>
               </details>
-            </div>
+            </Link>
           ))
         )}
       </main>
