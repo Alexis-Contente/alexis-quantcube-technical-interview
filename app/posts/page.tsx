@@ -30,15 +30,17 @@ export default function Posts() {
   return (
     <>
       <Header />
-      {posts ? (
-        posts.map((post) => (
-          <div key={post.id} className={style.card_container}>
-            <h1>{post.title}</h1>
-          </div>
-        ))
-      ) : (
-        <p>Loading...</p>
-      )}
+      <main className={style.main}>
+        {posts ? (
+          posts.map((post) => (
+            <div key={post.id} className={style.card_container}>
+              <h1>{post.title}</h1>
+            </div>
+          ))
+        ) : (
+          <p>Loading...</p>
+        )}
+      </main>
       <Footer />
     </>
   );

@@ -3,3 +3,7 @@ body {
   margin: 0;
   height: 100%;
 }
+
+main {
+  margin: 100px;
+}
