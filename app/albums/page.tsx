@@ -7,6 +7,7 @@ import Footer from "@/components/footer/page";
 import Loader from "@/components/loader/page";
 import { useEffect, useState } from "react";
 import { Albums } from "@/types/albums";
+import Link from "next/link";
 
 export default function Albums() {
   // STATES
@@ -45,9 +46,13 @@ export default function Albums() {
           <Loader />
         ) : (
           albums.map((album) => (
-            <div className={style.album_card} key={album.id}>
+            <Link
+              className={style.album_card}
+              key={album.id}
+              href={`/albums/${album.id}`}
+            >
               <h1 className={style.title}>{album.title}</h1>
-            </div>
+            </Link>
           ))
         )}
       </main>
