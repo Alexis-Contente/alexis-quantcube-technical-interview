@@ -11,7 +11,7 @@ import Loader from "@/components/loader/page";
 export default function UserById({ params }: { params: { id: string } }) {
   // STATES
   // User by id
-  const [userById, setUserById] = useState<Users[]>([]);
+  const [userById, setUserById] = useState<Users | null>(null);
 
   // Loader
   const [loading, setLoading] = useState(true);
@@ -49,27 +49,31 @@ export default function UserById({ params }: { params: { id: string } }) {
           <Loader />
         ) : (
           <div className={style.user_card}>
-            <h1>{userById.name}</h1>
-            <p>{userById.email}</p>
-            <p>{userById.phone}</p>
-            <p>{userById.website}</p>
-            <details>
-              <summary>Address</summary>
+            {userById && (
               <>
-                <p>{userById.address.street}</p>
-                <p>{userById.address.suite}</p>
-                <p>{userById.address.city}</p>
-                <p>{userById.address.zipcode}</p>
+                <h1>{userById.name}</h1>
+                <p>{userById.email}</p>
+                <p>{userById.phone}</p>
+                <p>{userById.website}</p>
+                <details>
+                  <summary>Address</summary>
+                  <>
+                    <p>{userById.address.street}</p>
+                    <p>{userById.address.suite}</p>
+                    <p>{userById.address.city}</p>
+                    <p>{userById.address.zipcode}</p>
+                  </>
+                </details>
+                <details>
+                  <summary>Company</summary>
+                  <>
+                    <p>{userById.company.name}</p>
+                    <p>{userById.company.catchPhrase}</p>
+                    <p>{userById.company.bs}</p>
+                  </>
+                </details>
               </>
-            </details>
-            <details>
-              <summary>Company</summary>
-              <>
-                <p>{userById.company.name}</p>
-                <p>{userById.company.catchPhrase}</p>
-                <p>{userById.company.bs}</p>
-              </>
-            </details>
+            )}
           </div>
         )}
       </main>

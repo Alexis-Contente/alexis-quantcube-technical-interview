@@ -17,6 +17,7 @@ export default function Users() {
   const [users, setUsers] = useState<Users[]>([]);
 
   // API CALL
+  // Get users
   const fetchUsersData = async () => {
     try {
       const response = await fetch(

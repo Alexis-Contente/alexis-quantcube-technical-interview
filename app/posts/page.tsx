@@ -18,6 +18,7 @@ export default function Posts() {
   const [posts, setPosts] = useState<Posts[]>([]);
 
   // API CALL
+  // Get posts
   const fetchPostsData = async () => {
     try {
       const response = await fetch(

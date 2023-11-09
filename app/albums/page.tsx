@@ -16,6 +16,7 @@ export default function Albums() {
   const [albums, setAlbums] = useState<Albums[]>([]);
 
   // API CALL
+  // Get albums
   const fetchAlbumsData = async () => {
     try {
       const response = await fetch(

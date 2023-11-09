@@ -16,6 +16,7 @@ export default function Todos() {
   const [todos, setTodos] = useState<Todos[]>([]);
 
   // API CALL
+  // Get todos
   const fetchTodosData = async () => {
     try {
       const response = await fetch(
