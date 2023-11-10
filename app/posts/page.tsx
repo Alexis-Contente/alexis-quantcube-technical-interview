@@ -7,6 +7,7 @@ import Footer from "@/components/footer/page";
 import Loader from "@/components/loader/page";
 import { useEffect, useState } from "react";
 import { Posts } from "@/types/posts";
+import Link from "next/link";
 
 export default function Posts() {
   const baseUrlApi = process.env.BASE_URL_API;
@@ -46,9 +47,13 @@ export default function Posts() {
           <Loader />
         ) : (
           posts.map((post) => (
-            <div key={post.id} className={style.post_card}>
+            <Link
+              className={style.post_card}
+              key={post.id}
+              href={`/posts/${post.id}`}
+            >
               <h1 className={style.title}>{post.title}</h1>
-            </div>
+            </Link>
           ))
         )}
       </main>
