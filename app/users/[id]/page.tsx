@@ -19,9 +19,6 @@ export default function UserById({ params }: { params: { id: string } }) {
   // User by id
   const [userById, setUserById] = useState<Users | null>(null);
 
-  // Todos by userId
-  const [todosByUserId, setTodosByUserId] = useState<Todos[]>([]);
-
   // Posts by userId
   const [postsByUserId, setPostsByUserId] = useState<Posts[]>([]);
 
@@ -38,25 +35,6 @@ export default function UserById({ params }: { params: { id: string } }) {
     } catch (error) {
       console.log(
         `Impossible de récupérer les datas de l'user id ${params.id}`,
-        error
-      );
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  // Get todos by user id
-  const fetchTodosByUserId = async () => {
-    try {
-      const response = await fetch(
-        `https://jsonplaceholder.typicode.com/todos?userId=${params.id}`
-      );
-      const data = await response.json();
-      console.log("Todos by ID: ", data);
-      setTodosByUserId(data);
-    } catch (error) {
-      console.log(
-        `Impossible de récupérer les datas des todos de l'user id ${params.id}`,
         error
       );
     } finally {
@@ -86,7 +64,6 @@ export default function UserById({ params }: { params: { id: string } }) {
   // USE EFFECT
   useEffect(() => {
     fetchUserById();
-    fetchTodosByUserId();
     fetchPostsByUserId();
   }, []);
 
@@ -115,15 +92,7 @@ export default function UserById({ params }: { params: { id: string } }) {
                   <p>{userById.company.catchPhrase}</p>
                   <p>{userById.company.bs}</p>
                 </div>
-                <Link href={`/users/posts/${params.id}`}>Todos</Link>
-                <>
-                  {todosByUserId.map((todo) => (
-                    <div className={style.todo_card} key={todo.id}>
-                      <p>{todo.title}</p>
-                      <p>{todo.completed ? "Fait" : "A faire"}</p>
-                    </div>
-                  ))}
-                </>
+                <Link href={`/users/todos/${params.id}`}>Todos</Link>
                 <h3>Posts</h3>
                 <>
                   {postsByUserId.map((post) => (
