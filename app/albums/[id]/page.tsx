@@ -7,6 +7,7 @@ import Footer from "@/components/footer/page";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { Photos } from "@/types/photos";
+import Loader from "@/components/loader/page";
 
 export default function Album({ params }: { params: { id: string } }) {
   // STATES
@@ -45,10 +46,10 @@ export default function Album({ params }: { params: { id: string } }) {
       <Header />
       <main className={style.main}>
         {loading ? (
-          <p>Chargement...</p>
+          <Loader />
         ) : (
           photosById.map((photo) => (
-            <div key={photo.id}>
+            <div className={style.photos_container} key={photo.id}>
               <Image
                 src={photo.thumbnailUrl}
                 alt={photo.title}
