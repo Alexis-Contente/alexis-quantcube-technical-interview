@@ -9,6 +9,7 @@ import { Users } from "@/types/users";
 import { Todos } from "@/types/todos";
 import { Posts } from "@/types/posts";
 import Loader from "@/components/loader/page";
+import Link from "next/link";
 
 export default function UserById({ params }: { params: { id: string } }) {
   // STATES
@@ -96,35 +97,37 @@ export default function UserById({ params }: { params: { id: string } }) {
         {loading ? (
           <Loader />
         ) : (
-          <div className={style.user_card}>
+          <div className={style.card_container}>
             {userById && (
               <>
-                <h1>{userById.name}</h1>
-                <p>{userById.email}</p>
-                <p>{userById.phone}</p>
-                <p>{userById.website}</p>
-                <h2>Address</h2>
-                <p>{userById.address.street}</p>
-                <p>{userById.address.suite}</p>
-                <p>{userById.address.city}</p>
-                <p>{userById.address.zipcode}</p>
-                <h2>Company</h2>
-                <p>{userById.company.name}</p>
-                <p>{userById.company.catchPhrase}</p>
-                <p>{userById.company.bs}</p>
-                <h2>Todos</h2>
+                <div className={style.user_card}>
+                  <h1>{userById.name}</h1>
+                  <p>{userById.email}</p>
+                  <p>{userById.phone}</p>
+                  <p>{userById.website}</p>
+                  <h3>Address</h3>
+                  <p>{userById.address.street}</p>
+                  <p>{userById.address.suite}</p>
+                  <p>{userById.address.city}</p>
+                  <p>{userById.address.zipcode}</p>
+                  <h3>Company</h3>
+                  <p>{userById.company.name}</p>
+                  <p>{userById.company.catchPhrase}</p>
+                  <p>{userById.company.bs}</p>
+                </div>
+                <Link href={`/users/posts/${params.id}`}>Todos</Link>
                 <>
                   {todosByUserId.map((todo) => (
-                    <div key={todo.id}>
+                    <div className={style.todo_card} key={todo.id}>
                       <p>{todo.title}</p>
                       <p>{todo.completed ? "Fait" : "A faire"}</p>
                     </div>
                   ))}
                 </>
-                <h2>Posts</h2>
+                <h3>Posts</h3>
                 <>
                   {postsByUserId.map((post) => (
-                    <div key={post.id}>
+                    <div className={style.post_card} key={post.id}>
                       <p>{post.title}</p>
                     </div>
                   ))}
