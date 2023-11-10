@@ -1,6 +1,7 @@
 "use client";
 
 // IMPORTS
+import style from "./page.module.css";
 import Footer from "@/components/footer/page";
 import Header from "@/components/header/page";
 import Loader from "@/components/loader/page";
@@ -65,15 +66,15 @@ export default function Post({ params }: { params: { id: string } }) {
   return (
     <>
       <Header />
-      <main>
+      <main className={style.post_container}>
         {loading ? (
           <Loader />
         ) : (
           post && (
-            <article>
+            <div className={style.post}>
               <h1>{post.title}</h1>
               <p>{post.body}</p>
-            </article>
+            </div>
           )
         )}
       </main>
