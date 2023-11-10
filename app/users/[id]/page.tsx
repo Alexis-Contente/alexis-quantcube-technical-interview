@@ -103,44 +103,32 @@ export default function UserById({ params }: { params: { id: string } }) {
                 <p>{userById.email}</p>
                 <p>{userById.phone}</p>
                 <p>{userById.website}</p>
-                <details>
-                  <summary>Address</summary>
-                  <>
-                    <p>{userById.address.street}</p>
-                    <p>{userById.address.suite}</p>
-                    <p>{userById.address.city}</p>
-                    <p>{userById.address.zipcode}</p>
-                  </>
-                </details>
-                <details>
-                  <summary>Company</summary>
-                  <>
-                    <p>{userById.company.name}</p>
-                    <p>{userById.company.catchPhrase}</p>
-                    <p>{userById.company.bs}</p>
-                  </>
-                </details>
-                <details>
-                  <summary>Todos</summary>
-                  <>
-                    {todosByUserId.map((todo) => (
-                      <div key={todo.id}>
-                        <p>{todo.title}</p>
-                        <p>{todo.completed ? "Fait" : "A faire"}</p>
-                      </div>
-                    ))}
-                  </>
-                </details>
-                <details>
-                  <summary>Posts</summary>
-                  <>
-                    {postsByUserId.map((post) => (
-                      <div key={post.id}>
-                        <p>{post.title}</p>
-                      </div>
-                    ))}
-                  </>
-                </details>
+                <h2>Address</h2>
+                <p>{userById.address.street}</p>
+                <p>{userById.address.suite}</p>
+                <p>{userById.address.city}</p>
+                <p>{userById.address.zipcode}</p>
+                <h2>Company</h2>
+                <p>{userById.company.name}</p>
+                <p>{userById.company.catchPhrase}</p>
+                <p>{userById.company.bs}</p>
+                <h2>Todos</h2>
+                <>
+                  {todosByUserId.map((todo) => (
+                    <div key={todo.id}>
+                      <p>{todo.title}</p>
+                      <p>{todo.completed ? "Fait" : "A faire"}</p>
+                    </div>
+                  ))}
+                </>
+                <h2>Posts</h2>
+                <>
+                  {postsByUserId.map((post) => (
+                    <div key={post.id}>
+                      <p>{post.title}</p>
+                    </div>
+                  ))}
+                </>
               </>
             )}
           </div>
