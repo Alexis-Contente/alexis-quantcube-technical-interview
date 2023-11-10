@@ -6,7 +6,6 @@ import style from "./page.module.css";
 import Footer from "@/components/footer/page";
 import { useEffect, useState } from "react";
 import { Users } from "@/types/users";
-import { Todos } from "@/types/todos";
 import { Posts } from "@/types/posts";
 import Loader from "@/components/loader/page";
 import Link from "next/link";
@@ -93,14 +92,7 @@ export default function UserById({ params }: { params: { id: string } }) {
                   <p>{userById.company.bs}</p>
                 </div>
                 <Link href={`/users/todos/${params.id}`}>Todos</Link>
-                <h3>Posts</h3>
-                <>
-                  {postsByUserId.map((post) => (
-                    <div className={style.post_card} key={post.id}>
-                      <p>{post.title}</p>
-                    </div>
-                  ))}
-                </>
+                <Link href={`/users/posts/${params.id}`}>Posts</Link>
               </>
             )}
           </div>

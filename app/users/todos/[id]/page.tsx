@@ -47,7 +47,7 @@ export default function TodosByUserId({ params }: { params: { id: string } }) {
         {loading ? (
           <Loader />
         ) : (
-          <div className={style.todo_container}>
+          <div className={style.todos_container}>
             {todosByUserId.map((todo) => (
               <p className={style.title} key={todo.id}>
                 {todo.title}{" "}

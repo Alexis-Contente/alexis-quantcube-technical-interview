@@ -1,4 +1,4 @@
-.todos_container {
+.posts_container {
   margin: 10px;
   padding: 10px 25px;
   background-color: #e2e2e2;
@@ -15,5 +15,14 @@
 }
 
 .title {
-  text-transform: uppercase;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+  text-decoration: none;
+  color: #000000;
+}
+
+.title:hover {
+  text-decoration: underline;
+  cursor: pointer;
 }
