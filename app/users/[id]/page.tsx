@@ -6,6 +6,7 @@ import style from "./page.module.css";
 import Footer from "@/components/footer/page";
 import { useEffect, useState } from "react";
 import { Users } from "@/types/users";
+import { Todos } from "@/types/todos";
 import Loader from "@/components/loader/page";
 
 export default function UserById({ params }: { params: { id: string } }) {
@@ -17,7 +18,7 @@ export default function UserById({ params }: { params: { id: string } }) {
   const [userById, setUserById] = useState<Users | null>(null);
 
   // Todos by userId
-  const [todosById, setTodosById] = useState<Users[]>([]);
+  const [todosById, setTodosById] = useState<Todos[]>([]);
 
   // CALL API
   // Get user by id
@@ -93,6 +94,17 @@ export default function UserById({ params }: { params: { id: string } }) {
                     <p>{userById.company.name}</p>
                     <p>{userById.company.catchPhrase}</p>
                     <p>{userById.company.bs}</p>
+                  </>
+                </details>
+                <details>
+                  <summary>Todos</summary>
+                  <>
+                    {todosById.map((todo) => (
+                      <div key={todo.id}>
+                        <p>{todo.title}</p>
+                        <p>{todo.completed ? "Fait" : "A faire"}</p>
+                      </div>
+                    ))}
                   </>
                 </details>
               </>
