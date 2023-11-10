@@ -91,8 +91,20 @@ export default function UserById({ params }: { params: { id: string } }) {
                   <p>{userById.company.catchPhrase}</p>
                   <p>{userById.company.bs}</p>
                 </div>
-                <Link href={`/users/todos/${params.id}`}>Todos</Link>
-                <Link href={`/users/posts/${params.id}`}>Posts</Link>
+                <div className={style.links}>
+                  <Link
+                    className={style.link}
+                    href={`/users/todos/${params.id}`}
+                  >
+                    Todos
+                  </Link>
+                  <Link
+                    className={style.link}
+                    href={`/users/posts/${params.id}`}
+                  >
+                    Posts
+                  </Link>
+                </div>
               </>
             )}
           </div>
