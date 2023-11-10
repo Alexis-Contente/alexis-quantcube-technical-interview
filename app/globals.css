@@ -6,4 +6,5 @@ body {
 
 main {
   margin: 100px;
+  min-height: 59vh;
 }
