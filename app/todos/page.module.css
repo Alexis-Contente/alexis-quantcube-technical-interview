@@ -15,14 +15,6 @@
   box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 }
 
-.todo_card:hover,
-.todo_card:focus,
-.todo_card:active {
-  transform: scale(1.05);
-  background-color: #d4d4d4;
-  cursor: pointer;
-}
-
 .title {
   font-size: 1.5rem;
 }
