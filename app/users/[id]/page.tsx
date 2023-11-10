@@ -10,11 +10,14 @@ import Loader from "@/components/loader/page";
 
 export default function UserById({ params }: { params: { id: string } }) {
   // STATES
+  // Loader
+  const [loading, setLoading] = useState(true);
+
   // User by id
   const [userById, setUserById] = useState<Users | null>(null);
 
-  // Loader
-  const [loading, setLoading] = useState(true);
+  // Todos by userId
+  const [todosById, setTodosById] = useState<Users[]>([]);
 
   // CALL API
   // Get user by id
@@ -36,9 +39,29 @@ export default function UserById({ params }: { params: { id: string } }) {
     }
   };
 
+  // Get todos by user id
+  const fetchTodosById = async () => {
+    try {
+      const response = await fetch(
+        `https://jsonplaceholder.typicode.com/todos?userId=${params.id}`
+      );
+      const data = await response.json();
+      console.log("Todos by ID: ", data);
+      setTodosById(data);
+    } catch (error) {
+      console.log(
+        `Impossible de récupérer les datas des todos de l'user id ${params.id}`,
+        error
+      );
+    } finally {
+      setLoading(false);
+    }
+  };
+
   // USE EFFECT
   useEffect(() => {
     fetchUserById();
+    fetchTodosById();
   }, []);
 
   return (
