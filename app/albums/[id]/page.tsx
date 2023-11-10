@@ -13,7 +13,7 @@ export default function Album({ params }: { params: { id: string } }) {
   //Loader
   const [loading, setLoading] = useState<boolean>(true);
   //Album by Id
-  const [albumById, setAlbumById] = useState<Photos[]>([]);
+  const [photosById, setPhotosById] = useState<Photos[]>([]);
 
   // API CALL
   // Get album by id
@@ -24,7 +24,7 @@ export default function Album({ params }: { params: { id: string } }) {
       );
       const data = await response.json();
       console.log("Album by ID: ", data);
-      setAlbumById(data);
+      setPhotosById(data);
     } catch (error) {
       console.log(
         `Impossible de récupérer les datas de l'album id ${params.id}`,
@@ -47,7 +47,7 @@ export default function Album({ params }: { params: { id: string } }) {
         {loading ? (
           <p>Chargement...</p>
         ) : (
-          albumById.map((photo) => (
+          photosById.map((photo) => (
             <div key={photo.id}>
               <Image
                 src={photo.thumbnailUrl}
