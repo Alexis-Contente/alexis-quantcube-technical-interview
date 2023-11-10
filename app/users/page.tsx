@@ -8,6 +8,7 @@ import Loader from "@/components/loader/page";
 import { useEffect, useState } from "react";
 import { Users } from "@/types/users";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Users() {
   // STATES
@@ -45,35 +46,47 @@ export default function Users() {
         {loading ? (
           <Loader />
         ) : (
-          users.map((user) => (
-            <Link
-              className={style.user_card}
-              key={user.id}
-              href={`/users/${user.id}`}
-            >
-              <h1>{user.name}</h1>
-              <p>{user.email}</p>
-              <p>{user.phone}</p>
-              <p>{user.website}</p>
-              <details>
-                <summary>Address</summary>
-                <>
-                  <p>{user.address.street}</p>
-                  <p>{user.address.suite}</p>
-                  <p>{user.address.city}</p>
-                  <p>{user.address.zipcode}</p>
-                </>
-              </details>
-              <details>
-                <summary>Company</summary>
-                <>
-                  <p>{user.company.name}</p>
-                  <p>{user.company.catchPhrase}</p>
-                  <p>{user.company.bs}</p>
-                </>
-              </details>
-            </Link>
-          ))
+          <div className={style.user_card_container}>
+            {users.map((user) => (
+              <Link
+                className={style.user_card}
+                key={user.id}
+                href={`/users/${user.id}`}
+              >
+                <h1 className={style.name}>{user.name}</h1>
+                <div className={style.email}>
+                  <Image
+                    src="/icon-email.svg"
+                    alt="Icône email"
+                    width={15}
+                    height={15}
+                    className={style.icon}
+                  />{" "}
+                  <p className={style.text}>{user.email}</p>
+                </div>
+                <div className={style.phone}>
+                  <Image
+                    src="/icon-phone.svg"
+                    alt="Icône phone"
+                    width={15}
+                    height={15}
+                    className={style.icon}
+                  />{" "}
+                  <p className={style.text}>{user.phone}</p>
+                </div>
+                <div className={style.website}>
+                  <Image
+                    src="/icon-website.svg"
+                    alt="Icône website"
+                    width={15}
+                    height={15}
+                    className={style.icon}
+                  />{" "}
+                  <p className={style.text}>{user.website}</p>
+                </div>
+              </Link>
+            ))}
+          </div>
         )}
       </main>
       <Footer />
